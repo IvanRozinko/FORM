@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Lilita+One');
+
+* {
+    color: #0D322A;
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+    margin: 0;
+    outline: none;
+    overflow: auto;
+    height: 100%;
+}
+
+body {
+    min-width: 360px;
+    min-height: 640px;
+}
+
+header {
+    display: flex;
+    height: auto;
+    background: #EDEDED;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header--paw {
+    padding-right: 20px;
+}
+
+.header--logo {
+    content: url("images/logo.jpg");
+    height: 100px;
+    min-width: 100px;
+}
+
+
+.header--slogan {
+    flex-grow: 3;
+}
+
+.container {
+    display: flex;
+}
+
+.container--left_column {
+    flex: 1;
+    background-image: url("images/happy2D.jpg");
+    background-size: cover;
+    background-position: right;
+}
+
+.container--right_column {
+    flex: 1;
+    background-image: url("images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: auto;
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+
+    .container--left_column {
+        background-size: auto 80%;
+        background-position: top;
+    }
+}
+
+.form {
+    margin: 10% 10%;
+    padding: 5%;
+    justify-content: center;
+    max-height: 60%;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    color: #F8F8F6;
+    overflow: auto;
+
+}
+
+.form div {
+   align-content: space-between;
+}
+
+.form input {
+    height: 20px;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid #F8F8F6;
+    color: #F8F8F6;
+    text-align: center;
+
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form--btn {
+    height: 30px;
+    width: 80%;
+    margin-bottom: 10px;
+    background: #0D322A;
+    color: #F8F8F6;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.form--btn:hover {
+    background: #F8F8F6;
+    color: #0D322A;
+}
+
+.form--gender {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form--dog_size select {
+    text-transform: uppercase;
+    color: white;
+    padding: 5px 8px;
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid #F8F8F6;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+.form--dog_size option {
+    background-color: gray;
+    color: #EDEDED;
+}
+
+.input_form--textarea {
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #F8F8F6;
+    height: auto;
+    width: 90%;
+    text-align: left;
+    color: #F8F8F6;
+    text-transform: uppercase;
+}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+
+	
