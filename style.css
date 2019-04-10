@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lilita+One');
 
 * {
-    color: #0D322A;
+    color: #C0C0C0;
     font-family: 'Lilita One', cursive;
     text-align: center;
     margin: 0;
@@ -16,6 +16,7 @@ body {
 }
 
 header {
+
     display: flex;
     height: auto;
     background: #EDEDED;
@@ -25,6 +26,8 @@ header {
 
 .header--paw {
     padding-right: 20px;
+    color: #0D322A;
+
 }
 
 .header--logo {
@@ -35,6 +38,7 @@ header {
 
 
 .header--slogan {
+    color: #0D322A;
     flex-grow: 3;
 }
 
@@ -78,7 +82,7 @@ header {
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    color: #F8F8F6;
+    color:  #C0C0C0;
     overflow: auto;
 
 }
@@ -91,8 +95,8 @@ header {
     height: 20px;
     background: transparent;
     border: 0;
-    border-bottom: 2px solid #F8F8F6;
-    color: #F8F8F6;
+    border-bottom: 2px solid  #C0C0C0;
+    color:  #C0C0C0;
     text-align: center;
 
 }
