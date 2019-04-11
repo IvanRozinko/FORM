@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,120 +12,45 @@
 </head>
 <body>
 <header>
-    <div class="header--logo"></div>
-    <div><h1 class="header--slogan">WHERE THE DOGS R HAPPY :)</h1></div>
-    <div class="header--paw"><i class="fas fa-paw fa-3x"></i></div>
+    <div class="header__logo"></div>
+    <div><h1 class="header__slogan">WHERE THE DOGS R HAPPY :)</h1></div>
+    <i id="header-paw" class="fas fa-paw fa-3x"></i>
 </header>
 <div class="container">
-    <div class="container--left_column"></div>
-    <div class="container--right_column">
+    <div class="container__left_column"></div>
+    <div class="container__right_column">
         <form class="form">
-
             <h3>LET'S GET ACQUAINTED</h3>
-
-            <div>
-                <label for="name">NAME</label>
+            <label for="name">NAME
                 <input id="name" type="text" placeholder="DOG'S NAME">
-            </div>
-            <div>
-                <label for="age">AGE</label>
+            </label>
+            <label for="age">AGE
                 <input id="age" type="number" placeholder="DOG'S AGE YEARS">
+            </label>
+            <div class="form__gender">
+                <input id="male" type="radio" name="gender" checked="checked">
+                <label for="male">MALE DOG</label>
+                <input id="female" type="radio" name="gender">
+                <label for="female">FEMALE DOG </label>
             </div>
-            <div class="form--gender">
-                <div>
-                    <input id="male" type="radio" name="gender" checked="checked">
-                    <label for="male">MALE DOG</label>
-                </div>
-                <div>
-                    <input id="female" type="radio" name="gender">
-                    <label for="female">FEMALE DOG</label>
-                </div>
-            </div>
-            <h4>CHOOSE YOUR DOG SIZE</h4>
-            <div class="form--dog_size">
+            <label class="form__size">CHOOSE YOUR DOG SIZE
                 <select>
                     <option value="s">Small</option>
                     <option value="m">Medium</option>
                     <option value="l">Large</option>
                 </select>
-            </div>
-            <h4>TELL US MORE</h4>
-            <div><textarea class="input_form--textarea"
-                           placeholder="my lovely dog likes to play with ball ..">
-            </textarea>
+            </label>
+            <div class="form__textarea">
+                <label for="textarea">TELL US MORE </label>
+                <textarea placeholder="my lovely dog likes to play with ball .."
+                          id="textarea">
+                 </textarea>
             </div>
             <div>
-                <button type="button" class="form--btn">Send</button>
+                <button type="button" class="form__btn">Send</button>
             </div>
         </form>
     </div>
 </div>
 <script type="text/javascript" src="script1.js"></script>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test page</title>
-    <style media="screen"></style>
-</head>
-<body>
-<header>
-    <div class="header--logo"></div>
-    <div><h1 class="header--slogan">WHERE THE DOGS R HAPPY :)</h1></div>
-    <div class="header--paw"><i class="fas fa-paw fa-3x"></i></div>
-</header>
-<div class="container">
-    <div class="container--left_column"></div>
-    <div class="container--right_column">
-        <form class="form">
-
-            <h3>LET'S GET ACQUAINTED</h3>
-
-            <div>
-                <label for="name">NAME</label>
-                <input id="name" type="text" placeholder="DOG'S NAME">
-            </div>
-            <div>
-                <label for="age">AGE</label>
-                <input id="age" type="number" placeholder="DOG'S AGE YEARS">
-            </div>
-            <div class="form--gender">
-                <div>
-                    <input id="male" type="radio" name="gender" checked="checked">
-                    <label for="male">MALE DOG</label>
-                </div>
-                <div>
-                    <input id="female" type="radio" name="gender">
-                    <label for="female">FEMALE DOG</label>
-                </div>
-            </div>
-            <h4>CHOOSE YOUR DOG SIZE</h4>
-            <div class="form--dog_size">
-                <select>
-                    <option value="s">Small</option>
-                    <option value="m">Medium</option>
-                    <option value="l">Large</option>
-                </select>
-            </div>
-            <h4>TELL US MORE</h4>
-            <div><textarea class="input_form--textarea"
-                           placeholder="my lovely dog likes to play with ball ..">
-            </textarea>
-            </div>
-            <div>
-                <button type="button" class="form--btn">Send</button>
-            </div>
-        </form>
-    </div>
-</div>
-<script type="text/javascript" src="script1.js"></script>
-</body>
->>>>>>> 7289427dfb1753cdb16901b1dab501c62538e44a
-</html>
