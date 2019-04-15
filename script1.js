@@ -1,42 +1,37 @@
+const nameRegExp = /^\w+$/;
+const ageRegExp = /^\d{1,2}$/;
+
 
 //validate name
 const name = document.getElementById("name");
 name.addEventListener("focusout", () => {
-    if (!isNameValid(name)) {
-        name.style.borderBottomColor = "red";
-        name.removeEventListener("focusout", () => {
-        });
+    if (!isValid(email, emailRegExp)) {
+        name.removeEventListener("focusout", () =>{});
     }
-    name.addEventListener("keyup", () => {
-        if (!isNameValid(name)) {
-            name.style.borderBottomColor = "red";
-        } else {
-            name.style.borderBottomColor = "";
-        }
-    });
+    name.addEventListener(("keyup"), () => {isValid(name, nameRegExp)});
 });
-
-function isNameValid(name) {
-    return /^[A-Za-z]+$/.test(name.value);
-}
 
 //validate age
 const age = document.getElementById("age");
 age.addEventListener("focusout", () => {
-    if (!isAgeValid(age)) {
-        age.style.borderBottomColor = "red";
-        age.removeEventListener("focusout", () => {
-        });
+    if (!isValid(age, ageRegExp)) {
+        age.removeEventListener("focusout", () =>{});
     }
-    age.addEventListener("keyup", () => {
-        if (!isAgeValid(age)) {
-            age.style.borderBottomColor = "red";
-        } else {
-            age.style.borderBottomColor = "";
-        }
-    });
+    age.addEventListener(("keyup"), () => {isValid(age, ageRegExp)});
 });
 
-function isAgeValid(age) {
-    return /^\d{0,2}$/.test(age.value);
+/**
+ * Checking is string from input matches the regular expression and returning boolean answer
+ * @param input
+ * @param regExp
+ * @returns {boolean}
+ */
+function isValid(input, regExp) {
+    if (!regExp.test(input.value)){
+        input.className = "invalid";
+        return false;
+    }else {
+        input.className = "";
+    }
+    return true;
 }

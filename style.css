@@ -6,34 +6,27 @@
     text-align: center;
     margin: 0;
     outline: none;
-    overflow: auto;
     overflow-x: hidden;
     height: 100%;
 }
 
-
 body {
     min-width: 450px;
     min-height: 640px;
+    height: 100%;
 }
 
 header {
     display: flex;
     height: auto;
-    background: #EDEDED;
+    background: #C0C0C0;
+    padding: 0 20px;
     align-items: center;
     justify-content: space-between;
-    padding-right: 20px;
 }
 
-#header-paw {
+i {
     color: #0D322A;
-}
-
-.header__logo {
-    content: url("images/logo.jpg");
-    height: 100px;
-    min-width: 100px;
 }
 
 
@@ -44,21 +37,24 @@ header {
 
 .container {
     display: flex;
+    height: 85%;
 }
 
 .container__left_column {
     flex: 1;
-    background-image: url("images/happy2D.jpg");
+    background-image: url("images/background.jpg");
     background-size: cover;
-    background-position: right;
+    background-position: center;
 }
 
 .container__right_column {
     flex: 1;
-    background-image: url("images/background.jpg");
+    background-image: url("images/bricks.jpg");
     background-size: cover;
     background-position: center;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 400px) {
@@ -72,21 +68,21 @@ header {
     }
 }
 
+h2 {
+    margin-bottom: 30px;
+}
+
 .form {
     display: flex;
-    margin: 10% 10%;
-    padding: 5%;
-    justify-content: center;
+    padding: 10%;
+    justify-content: space-around;
+    align-content: space-between;
     height: auto;
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.3);
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     color: #C0C0C0;
-}
-
-.form label{
-    margin-bottom: 20px;
 }
 
 .form input {
@@ -131,11 +127,10 @@ input[type="checkbox"]:checked + #checkbox-label::before {
     background-size: 100%;
 }
 
-
 .form__btn {
     height: 30px;
     width: 80%;
-    margin-bottom: 10px;
+    margin-top: 30px;
     background: #0D322A;
     color: #C0C0C0;
     border-radius: 3px;
@@ -172,7 +167,7 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-input[type="radio"]:checked + label::before{
+input[type="radio"]:checked + label::before {
     background-image: url("images/pawprintbefore.png");
     background-size: 100%;
 }
@@ -187,12 +182,13 @@ input[type="radio"]:checked + label::before{
     border: 2px solid #C0C0C0;
     background-color: transparent;
     -webkit-appearance: none;
+    margin-bottom: 20px;
 }
-
 
 .form__size option {
     background-color: gray;
     color: #EDEDED;
+    text-align: center;
 }
 
 .form__textarea textarea {
@@ -205,6 +201,10 @@ input[type="radio"]:checked + label::before{
     text-align: left;
     color: #F8F8F6;
     resize: none;
+}
+
+input.invalid {
+    border-bottom: solid 2px red;
 }
 	
 	

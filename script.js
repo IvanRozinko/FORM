@@ -1,55 +1,49 @@
 
+const emailRegExp = /.+@.+\..+/;
+const passwordRegExp = /^[\w\d]{8,}$/;
+
+
 //email validation
 const email = document.getElementById("email");
 email.addEventListener("focusout", () => {
-    if (!isEmailValid(email)) {
-        email.style.borderBottomColor = "red";
-        email.removeEventListener("focusout", () => {
-        });
+    if (!isValid(email, emailRegExp)) {
+        email.removeEventListener("focusout", () =>{});
     }
-    email.addEventListener(("keyup"), () => {
-        if (!isEmailValid(email)) {
-            email.style.borderBottomColor = "red";
-        } else {
-            email.style.borderBottomColor = "";
-        }
-    });
+    email.addEventListener(("keyup"), () => {isValid(email, emailRegExp)});
 });
-
-function isEmailValid(email) {
-    return /.+@.+\..+/.test(email.value);
-}
 
 //pass validation
 const pass = document.getElementById("pass");
 pass.addEventListener("focusout", () => {
-    if (!isPassValid(pass)) {
-        pass.style.borderBottomColor = "red";
-        pass.removeEventListener("focusout", () => {
-        });
+    if (!isValid(pass, passwordRegExp)) {
+        pass.removeEventListener("focusout", () =>{});
     }
-    pass.addEventListener(("keyup"), () => {
-        if (!isPassValid(pass)) {
-            pass.style.borderBottomColor = "red";
-        } else {
-            pass.style.borderBottomColor = "";
-        }
-    });
+    pass.addEventListener(("keyup"), () => {isValid(pass, passwordRegExp)});
 });
 
-function isPassValid(pass) {
-    return pass.value.length <= 8 && pass.value.length >= 6
+/**
+ * Checking is string from input matches the regular expression and returning boolean answer
+ * @param input
+ * @param regExp
+ * @returns {boolean}
+ */
+function isValid(input, regExp) {
+    if (!regExp.test(input.value)){
+        input.className = "invalid";
+        return false;
+    }else {
+        input.className = "";
+    }
+    return true;
 }
 
 //checkbox validation
 const isAgree = document.getElementById("agree");
 
-//submit form
+/**
+ * Checking is all inputs are valid, if yes - opening next page
+ * @returns {boolean}
+ */
 function continueOrNot() {
-    if (isEmailValid(email) && isPassValid(pass) && isAgree.checked) {
-        return true;
-    } else {
-        alert("Please fill the form");
-        return false;
-    }
+    return isValid(email, emailRegExp) && isValid(pass, passwordRegExp) && isAgree.checked;
 }
