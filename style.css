@@ -7,18 +7,19 @@
     margin: 0;
     outline: none;
     overflow-x: hidden;
-    height: 100%;
 }
 
-body {
+
+body, html {
     min-width: 450px;
     min-height: 640px;
     height: 100%;
+
 }
 
 header {
     display: flex;
-    height: auto;
+    height: 15%;
     background: #C0C0C0;
     padding: 0 20px;
     align-items: center;
