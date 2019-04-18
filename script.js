@@ -1,4 +1,3 @@
-
 const emailRegExp = /.+@.+\..+/;
 const passwordRegExp = /^[\w\d]{8,}$/;
 
@@ -31,7 +30,7 @@ function isValid(input, regExp) {
     if (!regExp.test(input.value)){
         input.className = "invalid";
         return false;
-    }else {
+    } else {
         input.className = "";
     }
     return true;

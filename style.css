@@ -9,12 +9,10 @@
     overflow-x: hidden;
 }
 
-
 body, html {
     min-width: 450px;
     min-height: 640px;
     height: 100%;
-
 }
 
 header {
@@ -29,7 +27,6 @@ header {
 i {
     color: #0D322A;
 }
-
 
 .header__slogan {
     color: #0D322A;
@@ -75,7 +72,7 @@ h2 {
 
 .form {
     display: flex;
-    padding: 10%;
+    padding: 30px;
     justify-content: space-around;
     align-content: space-between;
     height: auto;
@@ -93,7 +90,12 @@ h2 {
     border-bottom: 2px solid #C0C0C0;
     color: #C0C0C0;
     text-align: center;
+    font-size: x-large;
+}
+
+.form label {
     margin-bottom: 20px;
+    font-size: small;
 }
 
 input[type=number]::-webkit-inner-spin-button {
@@ -192,16 +194,17 @@ input[type="radio"]:checked + label::before {
     text-align: center;
 }
 
-.form__textarea textarea {
+textarea {
     height: 60px;
     margin-bottom: 20px;
     background: transparent;
     border-radius: 5px;
     border: 2px solid #F8F8F6;
     width: 90%;
-    text-align: left;
+    text-align: start;
     color: #F8F8F6;
     resize: none;
+    text-indent: -40px;
 }
 
 input.invalid {
