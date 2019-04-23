@@ -6,18 +6,18 @@
     text-align: center;
     margin: 0;
     outline: none;
-    overflow-x: hidden;
 }
 
 body, html {
     min-width: 450px;
     min-height: 640px;
     height: 100%;
+    overflow-x: hidden;
 }
 
 header {
     display: flex;
-    height: 15%;
+    height: 10%;
     background: #C0C0C0;
     padding: 0 20px;
     align-items: center;
@@ -35,25 +35,30 @@ i {
 
 .container {
     display: flex;
-    height: 85%;
+    height: 90%;
 }
 
 .container__left_column {
     flex: 1;
-    background-image: url("images/background.jpg");
+    background: linear-gradient(45deg, #6c706f, #2c302f) ;
     background-size: cover;
-    background-position: center;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .container__right_column {
     flex: 1;
-    background-image: url("images/bricks.jpg");
+    background-image: url("../images/background.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 @media screen and (max-width: 400px) {
     .container {
@@ -70,6 +75,7 @@ h2 {
     margin-bottom: 30px;
 }
 
+
 .form {
     display: flex;
     padding: 30px;
@@ -77,7 +83,7 @@ h2 {
     align-content: space-between;
     height: auto;
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     flex-direction: column;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     color: #C0C0C0;
@@ -90,7 +96,7 @@ h2 {
     border-bottom: 2px solid #C0C0C0;
     color: #C0C0C0;
     text-align: center;
-    font-size: x-large;
+    font-size: large;
 }
 
 .form label {
@@ -126,7 +132,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked + #checkbox-label::before {
     background-color: #0D322A;
-    background-image: url("images/pawprintafter.png");
+    background-image: url("../images/pawprintafter.png");
     background-size: 100%;
 }
 
@@ -171,44 +177,28 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + label::before {
-    background-image: url("images/pawprintbefore.png");
+    background-image: url("../images/pawprintbefore.png");
     background-size: 100%;
-}
-
-.form__size select {
-    height: 30px;
-    text-transform: uppercase;
-    color: #C0C0C0;
-    padding: 5px 8px;
-    width: 90%;
-    border-radius: 5px;
-    border: 2px solid #C0C0C0;
-    background-color: transparent;
-    -webkit-appearance: none;
-    margin-bottom: 20px;
-}
-
-.form__size option {
-    background-color: gray;
-    color: #EDEDED;
-    text-align: center;
 }
 
 textarea {
     height: 60px;
-    margin-bottom: 20px;
     background: transparent;
     border-radius: 5px;
-    border: 2px solid #F8F8F6;
-    width: 90%;
+    border: 2px solid #C0C0C0;;
+    width: 98%;
     text-align: start;
-    color: #F8F8F6;
+    color: #C0C0C0;;
     resize: none;
     text-indent: -40px;
 }
 
 input.invalid {
     border-bottom: solid 2px red;
+}
+
+.hidden {
+    display: none;
 }
 	
 	
