@@ -190,7 +190,6 @@ textarea {
     text-align: start;
     color: #C0C0C0;;
     resize: none;
-    text-indent: -40px;
 }
 
 input.invalid {

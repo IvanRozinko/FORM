@@ -40,9 +40,9 @@
     <div class="container__right_column">
         <form id="form" class="form">
             <h2>PLEASE LOG IN</h2>
-            <input id="email" type="text" placeholder="example@gmail.com">
+            <input class="validateInput" id="email" type="text" placeholder="example@gmail.com">
             <label for="email">YOUR EMAIL</label>
-            <input id="pass" type="password" placeholder="min 8 characters">
+            <input class="validateInput" id="pass" type="password" placeholder="min 8 characters">
             <label for="pass">PASSWORD </label>
             <input id="agree" type="checkbox">
             <label id="checkbox-label" for="agree">I agree with everything</label>
@@ -52,9 +52,9 @@
         </form>
         <form id="form1" class="hidden">
             <h2>LET'S GET ACQUAINTED</h2>
-            <input id="name" type="text" placeholder="dog's name">
+            <input class="validateInput" id="name" type="text" placeholder="dog's name">
             <label for="name">NAME</label>
-            <input id="age" type="number" placeholder="age years">
+            <input class="validateInput" id="age" type="number" placeholder="age years">
             <label for="age">AGE</label>
             <div class="form__gender">
                 <input id="male" type="radio" name="gender" checked="checked">
@@ -77,8 +77,7 @@
             <div class="form__textarea">
                 <label for="textarea">TELL US MORE </label>
                 <textarea placeholder="my lovely dog likes to play with ball .."
-                          id="textarea">
-                 </textarea>
+                          id="textarea"></textarea>
             </div>
             <div>
                 <button type="button" class="form__btn">Send</button>

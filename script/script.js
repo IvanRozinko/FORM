@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     //connect dropdown plugin
     $("select").niceSelect();
@@ -8,13 +6,18 @@ $(document).ready(function () {
 
 
     /**
-     * Checking is all inputs are valid, if yes - opening next page
+     * Checking is all inputs are valid, if yes - opening next form
      * @returns {boolean}
      */
+    const email = document.getElementById("email");
+    const pass = document.getElementById("pass");
     $("#submit").on("click", function () {
-        if (isValid(email, emailRegExp) && isValid(pass, passwordRegExp) && isAgree.checked) {
-            const $formEnter =  $("#form");
-            const $formOne =  $("#form1");
+        if (isValid(email, regExps[0].regExp) &&
+             isValid(pass, regExps[1].regExp) &&
+              isAgree.checked)
+        {
+            const $formEnter = $("#form");
+            const $formOne = $("#form1");
             $formEnter.addClass("hidden");
             $formOne.removeClass("hidden");
             $formOne.addClass("form");
@@ -22,50 +25,35 @@ $(document).ready(function () {
     });
 });
 
+const regExps =
+    [
+        {name: "email", regExp: /.+@.+\..+/},
+        {name: "pass", regExp: /^[\w\d]{8,16}$/},
+        {name: "name", regExp: /^[A-Za-z]+$/},
+        {name: "age", regExp: /^[0-9]{1,2}$/}
+    ];
 
-
-const emailRegExp = /.+@.+\..+/;
-//email validation
-const email = document.getElementById("email");
-email.addEventListener("focusout", () => {
-    if (!isValid(email, emailRegExp)) {
-        email.removeEventListener("focusout", () =>{});
-    }
-    email.addEventListener(("keyup"), () => {isValid(email, emailRegExp)});
+const validateInputs = document.getElementsByClassName("validateInput");
+Array.from(validateInputs).forEach((input) => {
+    input.addEventListener("focusout", function () {
+        const inputID = this.id;
+        let obj = regExps.find(item => {
+            return item.name === inputID
+        });
+        if (!isValid(this, obj.regExp)) {
+            this.className = "invalid";
+            this.removeEventListener("focusout", () => {
+            });
+        }
+        this.addEventListener("keyup", () => {
+            this.className = isValid(this, obj.regExp) ? "" : "invalid";
+        });
+    });
 });
-
-const passwordRegExp = /^[\w\d]{8,}$/;
-//pass validation
-const pass = document.getElementById("pass");
-pass.addEventListener("focusout", () => {
-    if (!isValid(pass, passwordRegExp)) {
-        pass.removeEventListener("focusout", () =>{});
-    }
-    pass.addEventListener(("keyup"), () => {isValid(pass, passwordRegExp)});
-});
-
 
 //checkbox validation
 const isAgree = document.getElementById("agree");
 
-
-//validate name
-const name = document.getElementById("name");
-name.addEventListener("focusout", () => {
-    if (!isValid(name, nameRegExp)) {
-        name.removeEventListener("focusout", () =>{});
-    }
-    name.addEventListener(("keyup"), () => {isValid(name, nameRegExp)});
-});
-
-//validate age
-const age = document.getElementById("age");
-age.addEventListener("focusout", () => {
-    if (!isValid(age, ageRegExp)) {
-        age.removeEventListener("focusout", () =>{});
-    }
-    age.addEventListener(("keyup"), () => {isValid(age, ageRegExp)});
-});
 
 /**
  * Checking is string from input matches the regular expression and returning boolean answer
@@ -74,11 +62,5 @@ age.addEventListener("focusout", () => {
  * @returns {boolean}
  */
 function isValid(input, regExp) {
-    if (!regExp.test(input.value)){
-        input.className = "invalid";
-        return false;
-    } else {
-        input.className = "";
-    }
-    return true;
+    return regExp.test(input.value);
 }
