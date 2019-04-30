@@ -38,7 +38,7 @@ i {
     height: 90%;
 }
 
-.container__left_column {
+.container__left-column {
     flex: 1;
     background: linear-gradient(45deg, #6c706f, #2c302f) ;
     background-size: cover;
@@ -49,7 +49,7 @@ i {
     flex-direction: column;
 }
 
-.container__right_column {
+.container__right-column {
     flex: 1;
     background-image: url("../images/background.jpg");
     background-size: cover;
@@ -59,13 +59,12 @@ i {
     align-items: center;
 }
 
-
 @media screen and (max-width: 400px) {
     .container {
         flex-direction: column-reverse;
     }
 
-    .container--left_column {
+    .container__left-column {
         background-size: auto 80%;
         background-position: top;
     }
@@ -74,7 +73,6 @@ i {
 h2 {
     margin-bottom: 30px;
 }
-
 
 .form {
     display: flex;
@@ -106,6 +104,7 @@ h2 {
 
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+
 }
 
 input[type="checkbox"] {
@@ -164,6 +163,7 @@ input[type="radio"] {
 
 .form__gender label {
     padding-left: 20px;
+    vertical-align: top;
 }
 
 .form__gender label::before {
