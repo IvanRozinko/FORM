@@ -2,7 +2,10 @@ $(document).ready(function () {
     //connect dropdown plugin
     $("select").niceSelect();
     //connect slider plugin
-    $(".slide").slide();
+    $(function () {
+        $(".slide").slide();
+    });
+
 
     /**
      * Checking is all inputs are valid, if yes - opening next form
