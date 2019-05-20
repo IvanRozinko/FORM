@@ -135,7 +135,7 @@ input[type="checkbox"]:checked + #checkbox-label::before {
     background-size: 100%;
 }
 
-.form__btn {
+input[type="submit"] {
     height: 30px;
     width: 80%;
     margin-top: 30px;
@@ -147,7 +147,7 @@ input[type="checkbox"]:checked + #checkbox-label::before {
     text-transform: uppercase;
 }
 
-.form__btn:hover {
+input[type="submit"]:hover {
     background: #C0C0C0;
     color: #0D322A;
 }

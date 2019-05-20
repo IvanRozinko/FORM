@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="plugins/dropdown/nice-select.css">
-    <link rel="stylesheet" href="plugins/slider/css/jquery.slide.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
           integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="plugins/slider/css/jquery.slide.css">
+    <link rel="stylesheet" href="plugins/dropdown/nice-select.css">
+    <link rel="stylesheet" href="style/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dog's home</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 <header>
@@ -45,7 +44,7 @@
             <input id="agree" type="checkbox">
             <label id="checkbox-label" for="agree">I agree with everything</label>
             <div>
-                <button id="submit" type="button" class="form__btn">Sign in</button>
+                <input id="submit" type="submit" value="Sign in">
             </div>
         </form>
         <form id="form1" class="hidden">
@@ -61,7 +60,7 @@
                 <label for="female">FEMALE DOG </label>
             </div>
             <span>SELECT BREED</span>
-            <select>
+            <select class="breed_selector">
                 <option value="0">boxer</option>
                 <option value="1">akita</option>
                 <option value="2">basset-hound</option>
@@ -71,21 +70,20 @@
                 <option value="6">jack-russel</option>
                 <option value="7">poodle</option>
             </select>
-
             <div class="form__textarea">
                 <label for="textarea">TELL US MORE </label>
                 <textarea placeholder="my lovely dog likes to play with ball .."
                           id="textarea"></textarea>
             </div>
             <div>
-                <button type="button" class="form__btn">Send</button>
+                <input type="submit" value="Send">
             </div>
         </form>
     </div>
 </div>
-<script type="text/javascript" src="script/script.js"></script>
-<script src="plugins/dropdown/jquery.nice-select.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="plugins/slider/jquery.slide.js"></script>
-
+<script src="plugins/dropdown/jquery.nice-select.js"></script>
+<script src="script/script.js"></script>
 </body>
 </html>

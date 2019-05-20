@@ -1,10 +1,8 @@
 $(document).ready(function () {
     //connect dropdown plugin
-    $("select").niceSelect();
+    $(".breed_selector").niceSelect();
     //connect slider plugin
-    $(function () {
-        $(".slide").slide();
-    });
+    $(".slide").slide();
 
 
     /**
@@ -14,7 +12,9 @@ $(document).ready(function () {
     const email = document.getElementById("email");
     const pass = document.getElementById("pass");
 
-    $("#submit").on("click", function () {
+    $(document).on("submit", "#form", function(event) {
+
+        event.preventDefault();
 
         if (isValid(email, regExps[0].regExp) &&
              isValid(pass, regExps[1].regExp) &&
@@ -28,6 +28,8 @@ $(document).ready(function () {
         }
     });
 });
+
+
 const regExps =
     [
         {name: "email", regExp: /.+@.+\..+/},
