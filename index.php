@@ -35,7 +35,7 @@
         <div class="slider-frame"></div>
     </div>
     <div class="container__right-column">
-        <form id="form" class="form">
+        <form id="form" class="form" method="post">
             <h2>PLEASE LOG IN</h2>
             <input class="validateInput" id="email" type="text" placeholder="example@gmail.com">
             <label for="email">YOUR EMAIL</label>
@@ -44,9 +44,18 @@
             <input id="agree" type="checkbox">
             <label id="checkbox-label" for="agree">I agree with everything</label>
             <div>
-                <input id="submit" type="submit" value="Sign in">
+                <input id="sign_in" type="submit" value="Sign in">
             </div>
         </form>
+        <?php
+        if (isset($_POST["sign_in"])){
+            $filename = "users/" . $_POST["sign_in"];
+
+
+
+
+        }
+        ?>
         <form id="form1" class="hidden">
             <h2>LET'S GET ACQUAINTED</h2>
             <input class="validateInput" id="name" type="text" placeholder="dog's name">
