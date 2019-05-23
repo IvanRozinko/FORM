@@ -35,30 +35,46 @@
         <div class="slider-frame"></div>
     </div>
     <div class="container__right-column">
-        <form id="form" class="form" method="post" action="form.php">
-            <h2>PLEASE LOG IN</h2>
-            <input class="validateInput" id="email" type="text" placeholder="example@gmail.com">
-            <label for="email">YOUR EMAIL</label>
-            <input class="validateInput" id="pass" type="password" placeholder="pass 8-16 characters">
-            <label for="pass">PASSWORD </label>
-            <input id="agree" type="checkbox">
-            <label id="checkbox-label" for="agree">I agree with everything</label>
-            <div>
-                <input id="sign_in" type="submit" value="Sign in">
-            </div>
-        </form>
         <?php
         if (isset($_POST["sign_in"])){
             $filename = "users/" . $_POST["sign_in"];
             $file = fopen($filename, "w+");
 
 
-
-
-
         }
         ?>
-
+        <form id="form1" class ="form">
+            <h2>LET'S GET ACQUAINTED</h2>
+            <input class="validateInput" id="name" type="text" placeholder="dog's name">
+            <label for="name">NAME</label>
+            <input class="validateInput" id="age" type="number" placeholder="age years">
+            <label for="age">AGE</label>
+            <div class="form__gender">
+                <input id="male" type="radio" name="gender" checked="checked">
+                <label for="male">MALE DOG</label>
+                <input id="female" type="radio" name="gender">
+                <label for="female">FEMALE DOG </label>
+            </div>
+            <span>SELECT BREED</span>
+            <select class="breed_selector">
+                <option value="0">boxer</option>
+                <option value="1">akita</option>
+                <option value="2">basset-hound</option>
+                <option value="3">bull-terrier</option>
+                <option value="4">collie</option>
+                <option value="5">dalmatian</option>
+                <option value="6">jack-russel</option>
+                <option value="7">poodle</option>
+            </select>
+            <div class="form__textarea">
+                <label for="textarea">TELL US MORE </label>
+                <textarea placeholder="my lovely dog likes to play with ball .."
+                          id="textarea"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Send">
+            </div>
+        </form>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -67,3 +83,4 @@
 <script src="script/script.js"></script>
 </body>
 </html>
+<?php

@@ -12,21 +12,21 @@ $(document).ready(function () {
     const email = document.getElementById("email");
     const pass = document.getElementById("pass");
 
-    $(document).on("submit", "#form", function(event) {
-
-        event.preventDefault();
-
-        if (isValid(email, regExps[0].regExp) &&
-             isValid(pass, regExps[1].regExp) &&
-              isAgree.checked)
-        {
-            const $formEnter = $("#form");
-            const $formOne = $("#form1");
-            $formEnter.addClass("hidden");
-            $formOne.removeClass("hidden");
-            $formOne.addClass("form");
-        }
-    });
+    // $(document).on("submit", "#form", function(event) {
+    //
+    //     event.preventDefault();
+    //
+    //     if (isValid(email, regExps[0].regExp) &&
+    //          isValid(pass, regExps[1].regExp) &&
+    //           isAgree.checked)
+    //     {
+    //         const $formEnter = $("#form");
+    //         const $formOne = $("#form1");    //here not hide form but change page
+    //         $formEnter.addClass("hidden");
+    //         $formOne.removeClass("hidden");
+    //         $formOne.addClass("form");
+    //     }
+    // });
 });
 
 
