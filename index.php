@@ -48,15 +48,23 @@
             </div>
         </form>
         <?php
-        if (isset($_POST["sign_in"])){
-            $filename = "users/" . $_POST["sign_in"];
-            $file = fopen($filename, "w+");
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+           $valid = true;
+           $email = $_POST["email"];
+           $pass = $_POST["pass"];
 
+           if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-
-
-
+               $valid = false;
+           }
         }
+
+
+//https://stackoverflow.com/questions/10219278/php-show-error-messages-in-order-and-re-display-correct-fields
+//https://stackoverflow.com/questions/5855811/how-to-validate-an-email-in-php
+        //https://stackoverflow.com/questions/18820013/html-form-php-post-to-self-to-validate-or-submit-to-new-page
+
+
         ?>
 
     </div>

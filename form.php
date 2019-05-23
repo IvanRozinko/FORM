@@ -36,12 +36,14 @@
     </div>
     <div class="container__right-column">
         <?php
-        if (isset($_POST["sign_in"])){
-            $filename = "users/" . $_POST["sign_in"];
-            $file = fopen($filename, "w+");
-
-
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            echo "It's all good";
         }
+
+
+
+
+
         ?>
         <form id="form1" class ="form">
             <h2>LET'S GET ACQUAINTED</h2>
