@@ -1,14 +1,23 @@
 <?php
-print_r($_POST);
-//$filename = $_POST["email"];
+if (isset($_POST["send"])) {
+    print_r($_POST);
+    session_start();
+    $user_filename = str_replace(array("<", ">", ":", "'", "/", "\\", "|", "?", "*"), "", $_SESSION["userdata"]["email"]);
+    $path = "users/" . $user_filename . ".json";
+    $json_object = file_get_contents($path);
+    $user_data = json_decode($json_object, true);
 
-//echo $filename;
+    $json_object = json_encode(   $user_data.push($_POST));
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="plugins/slider/css/jquery.slide.css">
     <link rel="stylesheet" href="plugins/dropdown/nice-select.css">
     <link rel="stylesheet" href="style/style.css">
@@ -41,11 +50,11 @@ print_r($_POST);
         <div class="slider-frame"></div>
     </div>
     <div class="container__right-column">
-        <form id="form1" class ="form">
+        <form id="form1" class="form" method="post">
             <h2>LET'S GET ACQUAINTED</h2>
-            <input class="validateInput" id="name" type="text" placeholder="dog's name">
+            <input class="validateInput" name="name" id="name" type="text" placeholder="dog's name">
             <label for="name">NAME</label>
-            <input class="validateInput" id="age" type="number" placeholder="age years">
+            <input class="validateInput" name="age" id="age" type="number" placeholder="age years">
             <label for="age">AGE</label>
             <div class="form__gender">
                 <input id="male" type="radio" name="gender" checked="checked">
@@ -54,7 +63,7 @@ print_r($_POST);
                 <label for="female">FEMALE DOG </label>
             </div>
             <span>SELECT BREED</span>
-            <select class="breed_selector">
+            <select name="breed_selector" class="breed_selector">
                 <option value="0">boxer</option>
                 <option value="1">akita</option>
                 <option value="2">basset-hound</option>
@@ -70,7 +79,7 @@ print_r($_POST);
                           id="textarea"></textarea>
             </div>
             <div>
-                <input type="submit" value="Send">
+                <input name="send" type="submit" value="Send">
             </div>
         </form>
 
@@ -82,4 +91,4 @@ print_r($_POST);
 <script src="script/script.js"></script>
 </body>
 </html>
-<?php
+

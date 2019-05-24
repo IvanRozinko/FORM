@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST["sign_in"])) {
-
+    session_start();
     $valid = true;
 
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
@@ -17,14 +17,17 @@ if (isset($_POST["sign_in"])) {
         $error_agree = "Please sign an agreement";
     }
     if ($valid) {
-        $filename = "users/" . $_POST["email"]. ".json";
-        $file = fopen($filename, "w");
-        fclose($file);
-        // here create json with name same as email if not exist otherwise just go to next page
+        $unsafe_chars = array("<", ">", ":", "'", "/", "\\", "|", "?", "*");
+        $user_filename = str_replace($unsafe_chars, "", $_POST["email"]);
+        $path = "users/" . $user_filename . ".json";
+        echo $path;
+        if (!file_exists($path)) {
+            $file = fopen($path, "w");
+            fclose($file);
+        }
         header("Location: form.php");
     }
 }
-
 
 
 //https://stackoverflow.com/questions/10219278/php-show-error-messages-in-order-and-re-display-correct-fields
