@@ -1,3 +1,9 @@
+<?php
+print_r($_POST);
+//$filename = $_POST["email"];
+
+//echo $filename;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,16 +41,6 @@
         <div class="slider-frame"></div>
     </div>
     <div class="container__right-column">
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            echo "It's all good";
-        }
-
-
-
-
-
-        ?>
         <form id="form1" class ="form">
             <h2>LET'S GET ACQUAINTED</h2>
             <input class="validateInput" id="name" type="text" placeholder="dog's name">
@@ -77,6 +73,7 @@
                 <input type="submit" value="Send">
             </div>
         </form>
+
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

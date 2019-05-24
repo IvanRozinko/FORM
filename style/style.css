@@ -188,12 +188,17 @@ textarea {
     border: 2px solid #C0C0C0;;
     width: 98%;
     text-align: start;
-    color: #C0C0C0;;
+    color: #C0C0C0;
     resize: none;
 }
 
 input.invalid {
     border-bottom: solid 2px red;
+}
+.error_msg {
+    font-size: smaller;
+    color: #C0C0C0;
+    font-style: italic;
 }
 
 	

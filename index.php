@@ -1,3 +1,39 @@
+<?php
+
+if (isset($_POST["sign_in"])) {
+
+    $valid = true;
+
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $valid = false;
+        $error_email = "Please check email input";
+    }
+    if (!preg_match("/^[\w]{8,16}$/", $_POST["pass"])) {
+        $valid = false;
+        $error_pass = "Your password should be 8 to 16 chars";
+    }
+    if (!isset($_POST["agree"])) {
+        $valid = false;
+        $error_agree = "Please sign an agreement";
+    }
+    if ($valid) {
+        $filename = "users/" . $_POST["email"]. ".json";
+        $file = fopen($filename, "w");
+        fclose($file);
+        // here create json with name same as email if not exist otherwise just go to next page
+        header("Location: form.php");
+    }
+}
+
+
+
+//https://stackoverflow.com/questions/10219278/php-show-error-messages-in-order-and-re-display-correct-fields
+//https://stackoverflow.com/questions/5855811/how-to-validate-an-email-in-php
+//https://stackoverflow.com/questions/18820013/html-form-php-post-to-self-to-validate-or-submit-to-new-page
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,37 +71,31 @@
         <div class="slider-frame"></div>
     </div>
     <div class="container__right-column">
-        <form id="form" class="form" method="post" action="form.php">
+        <form id="form" class="form" method="post" action="">
             <h2>PLEASE LOG IN</h2>
-            <input class="validateInput" id="email" type="text" placeholder="example@gmail.com">
+            <?php
+            if (isset($error_email))
+                echo "<span class='error_msg'>$error_email</span>";
+            ?>
+            <input class="validateInput" name="email" id="email" type="text" placeholder="example@gmail.com">
             <label for="email">YOUR EMAIL</label>
-            <input class="validateInput" id="pass" type="password" placeholder="pass 8-16 characters">
+            <?php
+            if (isset($error_pass))
+                echo "<span class='error_msg'>$error_pass</span>";
+            ?>
+            <input class="validateInput" name="pass" id="pass" type="password" placeholder="pass 8-16 characters">
             <label for="pass">PASSWORD </label>
-            <input id="agree" type="checkbox">
+            <?php
+            if (isset($error_agree))
+                echo "<span class='error_msg'>$error_agree</span>";
+            ?>
+            <input name="agree" id="agree" type="checkbox">
             <label id="checkbox-label" for="agree">I agree with everything</label>
+
             <div>
-                <input id="sign_in" type="submit" value="Sign in">
+                <input name="sign_in" id="sign_in" type="submit" value="Sign in">
             </div>
         </form>
-        <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST"){
-           $valid = true;
-           $email = $_POST["email"];
-           $pass = $_POST["pass"];
-
-           if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-               $valid = false;
-           }
-        }
-
-
-//https://stackoverflow.com/questions/10219278/php-show-error-messages-in-order-and-re-display-correct-fields
-//https://stackoverflow.com/questions/5855811/how-to-validate-an-email-in-php
-        //https://stackoverflow.com/questions/18820013/html-form-php-post-to-self-to-validate-or-submit-to-new-page
-
-
-        ?>
 
     </div>
 </div>
