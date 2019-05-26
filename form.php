@@ -1,15 +1,44 @@
 <?php
+session_start();
 if (isset($_POST["send"])) {
-    print_r($_POST);
-    session_start();
-    $user_filename = str_replace(array("<", ">", ":", "'", "/", "\\", "|", "?", "*"), "", $_SESSION["userdata"]["email"]);
-    $path = "users/" . $user_filename . ".json";
-    $json_object = file_get_contents($path);
-    $user_data = json_decode($json_object, true);
-
-    $json_object = json_encode(   $user_data.push($_POST));
+    $valid = true;
 
 
+    /**
+     * Saving user data t JSON file
+     * @param $filenameJSON
+     * @param $data
+     */
+    function writeToJSON($filenameJSON, $data)
+    {
+        $path = "users/" . $filenameJSON . ".json";
+        $json_object = json_encode($data);
+        file_put_contents($path, $json_object);
+    }
+
+    $name = $_POST["name"];
+    if (!preg_match(" /^[A-Za-z]+$/", $name)) {
+        $valid = false;
+        $error_name = "Name should consist only of latin letters";
+    }
+
+    $age = $_POST["age"];
+    if (!preg_match(" /^[0-9]{1,2}$/", $age)) {
+        echo
+        $valid = false;
+        $error_age = "Age should be a number 0 - 99";
+    }
+    //if all inputs are valid -> save user data to JSON file
+    if ($valid) {
+        $user_data = array(
+            "name" => $name,
+            "age" => $age,
+            "gender" => $_POST["gender"],
+            "breed" => $_POST["breed_selector"]
+        );
+        writeToJSON($_SESSION["email"], $user_data);
+        session_destroy();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -52,14 +81,22 @@ if (isset($_POST["send"])) {
     <div class="container__right-column">
         <form id="form1" class="form" method="post">
             <h2>LET'S GET ACQUAINTED</h2>
-            <input class="validateInput" name="name" id="name" type="text" placeholder="dog's name">
+            <?php if (isset($error_name)) echo "<span class='error_msg'>$error_name</span>"; ?>
+            <input class="validateInput" name="name" id="name"
+                                            type="text" placeholder="dog's name"
+                                             value="<?php if (isset($name)) echo $name ?>">
+
             <label for="name">NAME</label>
-            <input class="validateInput" name="age" id="age" type="number" placeholder="age years">
+            <?php if (isset($error_age)) echo "<span class='error_msg'>$error_age</span>"; ?>
+            <input class="validateInput" name="age" id="age"
+                                            type="number" placeholder="age years"
+                                             value="<?php if (isset($age)) echo $age?>">
+
             <label for="age">AGE</label>
             <div class="form__gender">
-                <input id="male" type="radio" name="gender" checked="checked">
+                <input id="male" type="radio" name="gender" checked="checked" value="male">
                 <label for="male">MALE DOG</label>
-                <input id="female" type="radio" name="gender">
+                <input id="female" type="radio" name="gender" value="female">
                 <label for="female">FEMALE DOG </label>
             </div>
             <span>SELECT BREED</span>

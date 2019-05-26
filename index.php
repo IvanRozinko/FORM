@@ -1,14 +1,15 @@
 <?php
-
+session_start();
 if (isset($_POST["sign_in"])) {
-    session_start();
     $valid = true;
+    $email = $_POST["email"];
+    $pass = $_POST["pass"];
 
-    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $valid = false;
         $error_email = "Please check email input";
     }
-    if (!preg_match("/^[\w]{8,16}$/", $_POST["pass"])) {
+    if (!preg_match("/^[\w]{8,16}$/", $pass)) {
         $valid = false;
         $error_pass = "Your password should be 8 to 16 chars";
     }
@@ -16,25 +17,28 @@ if (isset($_POST["sign_in"])) {
         $valid = false;
         $error_agree = "Please sign an agreement";
     }
-    if ($valid) {
+
+    /**Replacing in email all system forbidden characters
+     * @param $email
+     * @return mixed safe system file name
+     */
+    function giveSafeName($email)
+    {
         $unsafe_chars = array("<", ">", ":", "'", "/", "\\", "|", "?", "*");
-        $user_filename = str_replace($unsafe_chars, "", $_POST["email"]);
+        return str_replace($unsafe_chars, "", $email);
+    }
+    //if all inputs correct create
+    if ($valid) {
+        $user_filename = giveSafeName($email);
         $path = "users/" . $user_filename . ".json";
-        echo $path;
         if (!file_exists($path)) {
             $file = fopen($path, "w");
             fclose($file);
         }
+        $_SESSION["email"] = $user_filename;
         header("Location: form.php");
     }
 }
-
-
-//https://stackoverflow.com/questions/10219278/php-show-error-messages-in-order-and-re-display-correct-fields
-//https://stackoverflow.com/questions/5855811/how-to-validate-an-email-in-php
-//https://stackoverflow.com/questions/18820013/html-form-php-post-to-self-to-validate-or-submit-to-new-page
-
-
 ?>
 
 <!DOCTYPE html>
@@ -77,21 +81,19 @@ if (isset($_POST["sign_in"])) {
         <form id="form" class="form" method="post" action="">
             <h2>PLEASE LOG IN</h2>
             <?php
-            if (isset($error_email))
-                echo "<span class='error_msg'>$error_email</span>";
-            ?>
-            <input class="validateInput" name="email" id="email" type="text" placeholder="example@gmail.com">
+            if (isset($error_email)) echo "<span class='error_msg'>$error_email</span>"; ?>
+            <input class="validateInput" name="email" id="email"
+                                         type="text" placeholder="example@gmail.com"
+                                         value="<?php if (isset($email)) echo $email ?>">
             <label for="email">YOUR EMAIL</label>
             <?php
-            if (isset($error_pass))
-                echo "<span class='error_msg'>$error_pass</span>";
-            ?>
-            <input class="validateInput" name="pass" id="pass" type="password" placeholder="pass 8-16 characters">
+            if (isset($error_pass)) echo "<span class='error_msg'>$error_pass</span>"; ?>
+            <input class="validateInput" name="pass" id="pass"
+                                         type="password" placeholder="pass 8-16 characters"
+                                         value="<?php if (isset($pass)) echo $pass ?>">
             <label for="pass">PASSWORD </label>
             <?php
-            if (isset($error_agree))
-                echo "<span class='error_msg'>$error_agree</span>";
-            ?>
+            if (isset($error_agree)) echo "<span class='error_msg'>$error_agree</span>"; ?>
             <input name="agree" id="agree" type="checkbox">
             <label id="checkbox-label" for="agree">I agree with everything</label>
 
@@ -99,7 +101,6 @@ if (isset($_POST["sign_in"])) {
                 <input name="sign_in" id="sign_in" type="submit" value="Sign in">
             </div>
         </form>
-
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

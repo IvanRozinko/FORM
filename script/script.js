@@ -4,31 +4,6 @@ $(document).ready(function () {
     //connect slider plugin
     $(".slide").slide();
 
-
-    /**
-     * Checking is all inputs are valid, if yes - opening next form
-     * @returns {boolean}
-     */
-    const email = document.getElementById("email");
-    const pass = document.getElementById("pass");
-
-    // $(document).on("submit", "#form", function (event) {
-    //     console.log("click");
-    //      event.preventDefault();
-    //     //     if (isValid(email, regExps[0].regExp) &&
-    //     //          isValid(pass, regExps[1].regExp) &&
-    //     //           isAgree.checked)
-    //     //     {
-    //     //         const $formEnter = $("#form");
-    //     //         const $formOne = $("#form1");    //here not hide form but change page
-    //     //         $formEnter.addClass("hidden");
-    //     //         $formOne.removeClass("hidden");
-    //     //         $formOne.addClass("form");
-    //     //     }
-    //     // });
-    // });
-
-
     const regExps =
         [
             {name: "email", regExp: /.+@.+\..+/},
@@ -56,9 +31,6 @@ $(document).ready(function () {
             });
         });
     });
-
-//checkbox validation
-    const isAgree = document.getElementById("agree");
 
     /**
      * Checking is string from input matches the regular expression and returning boolean answer
