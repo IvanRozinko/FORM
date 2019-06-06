@@ -41,5 +41,20 @@ $(document).ready(function () {
     function isValid(input, regExp) {
         return regExp.test(input.value);
     }
+
+    //get all data from inputs
+    $("input[name=send]").bind("click", () => {
+        const $name = $("#name").value;
+        const $age = $("#age").value;
+        const $gender = $("input[name=gender]").value;
+        const $breed = $("inpur[name=breed_selector]").value;
+
+        $.ajax({
+            url: "saveUserData.php",
+            type: "POST",
+            data: {"name": $name, "age": $age, "gender": $gender, "breed": $breed},
+            //write msg success
+        })
+    })
 });
 

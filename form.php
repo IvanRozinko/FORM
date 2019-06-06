@@ -5,7 +5,7 @@ if (isset($_POST["send"])) {
 
 
     /**
-     * Saving user data t JSON file
+     * Saving user data to JSON file
      * @param $filenameJSON
      * @param $data
      */
