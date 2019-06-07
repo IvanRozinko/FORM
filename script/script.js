@@ -43,16 +43,22 @@ $(document).ready(function () {
     }
 
     //get all data from inputs
-    $("input[name=send]").bind("click", () => {
-        const $name = $("#name").value;
-        const $age = $("#age").value;
-        const $gender = $("input[name=gender]").value;
-        const $breed = $("inpur[name=breed_selector]").value;
+    $("input[name=send]").on("click", (event) => {
+        event.preventDefault();
 
         $.ajax({
             url: "saveUserData.php",
             type: "POST",
-            data: {"name": $name, "age": $age, "gender": $gender, "breed": $breed},
+            data: {
+                "name": $("#name").val(),
+                "age":  $("#age").val(),
+                "gender":  $("input[name=gender]").val(),
+                "breed": $(".breed_selector option:selected").text()
+            },
+            success: function (data) {
+                console.log(data);
+                $("#saved ").text("Your data has been saved");
+            }
             //write msg success
         })
     })

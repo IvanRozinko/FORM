@@ -1,45 +1,6 @@
 <?php
 session_start();
-if (isset($_POST["send"])) {
-    $valid = true;
 
-
-    /**
-     * Saving user data to JSON file
-     * @param $filenameJSON
-     * @param $data
-     */
-    function writeToJSON($filenameJSON, $data)
-    {
-        $path = "users/" . $filenameJSON . ".json";
-        $json_object = json_encode($data);
-        file_put_contents($path, $json_object);
-    }
-
-    $name = $_POST["name"];
-    if (!preg_match(" /^[A-Za-z]+$/", $name)) {
-        $valid = false;
-        $error_name = "Name should consist only of latin letters";
-    }
-
-    $age = $_POST["age"];
-    if (!preg_match(" /^[0-9]{1,2}$/", $age)) {
-        echo
-        $valid = false;
-        $error_age = "Age should be a number 0 - 99";
-    }
-    //if all inputs are valid -> save user data to JSON file
-    if ($valid) {
-        $user_data = array(
-            "name" => $name,
-            "age" => $age,
-            "gender" => $_POST["gender"],
-            "breed" => $_POST["breed_selector"]
-        );
-        writeToJSON($_SESSION["email"], $user_data);
-        session_destroy();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,6 +79,7 @@ if (isset($_POST["send"])) {
             <div>
                 <input name="send" type="submit" value="Send">
             </div>
+            <output id="saved"></output>
         </form>
 
     </div>
