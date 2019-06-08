@@ -12,28 +12,25 @@ function writeToJSON($filenameJSON, $data)
     file_put_contents($path, $json_object);
 }
 
+    $isValid = true;
+    $errors = [];
 
-
-//if (isset($_POST["send"])) {
-    $valid = true;
-
-    //TODO if inputs are empty
     $name = $_POST["name"];
     if (!preg_match(" /^[A-Za-z]+$/", $name)) {
-        $valid = false;
-        $error_name = "Name should consist only of latin letters";
-        echo $error_name;
+        $isValid = false;
+        $errors["error_name"] = "Name should consist only of latin letters";
     }
 
     $age = $_POST["age"];
     if (!preg_match(" /^[0-9]{1,2}$/", $age)) {
-        $valid = false;
-        $error_age = "Age should be a number 0 - 99";
-        echo  $error_age;
+        $isValid = false;
+        $errors["error_age"] = "Age should be a number 0 - 99";
     }
 
+    $errors["isValid"] = $isValid;
+
     //if all inputs are valid -> save user data to JSON file
-    if ($valid) {
+    if ($isValid) {
         $user_data = array(
             "name" => $name,
             "age" => $age,
@@ -41,13 +38,6 @@ function writeToJSON($filenameJSON, $data)
             "breed" => $_POST["breed"]
         );
         writeToJSON($_SESSION["email"], $user_data);
-//        session_destroy();
     }
-    print_r($_POST);
-//}
+    echo json_encode($errors);
 
-//https://www.youtube.com/watch?time_continue=12&v=L7Sn-f36TGM
-?>
-<script>
-    console.log("script");
-</script>

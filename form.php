@@ -42,13 +42,13 @@ session_start();
     <div class="container__right-column">
         <form id="form1" class="form" method="post">
             <h2>LET'S GET ACQUAINTED</h2>
-            <?php if (isset($error_name)) echo "<span class='error_msg'>$error_name</span>"; ?>
+            <span id="error_name" class="error_msg"></span>
             <input class="validateInput" name="name" id="name"
                                             type="text" placeholder="dog's name"
                                              value="<?php if (isset($name)) echo $name ?>">
 
             <label for="name">NAME</label>
-            <?php if (isset($error_age)) echo "<span class='error_msg'>$error_age</span>"; ?>
+            <span id="error_age" class="error_msg"></span>
             <input class="validateInput" name="age" id="age"
                                             type="number" placeholder="age years"
                                              value="<?php if (isset($age)) echo $age?>">
@@ -79,7 +79,7 @@ session_start();
             <div>
                 <input name="send" type="submit" value="Send">
             </div>
-            <output id="saved"></output>
+            <output class="valid" id="saved"></output>
         </form>
 
     </div>
