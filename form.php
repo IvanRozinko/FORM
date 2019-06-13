@@ -17,13 +17,13 @@ if (isset($_POST["send"])) {
     }
 
     $name = $_POST["name"];
-    if (!preg_match(" /^[A-Za-z]+$/", $name)) {
+    if (!preg_match(" /^\w+$/", $name)) {
         $valid = false;
         $error_name = "Name should consist only of latin letters";
     }
 
     $age = $_POST["age"];
-    if (!preg_match(" /^[0-9]{1,2}$/", $age)) {
+    if (!preg_match(" /^\d{1,2}$/", $age)) {
         echo
         $valid = false;
         $error_age = "Age should be a number 0 - 99";
