@@ -12,6 +12,7 @@ $(document).ready(function () {
             {name: "age", regExp: /^[0-9]{1,2}$/}
         ];
 
+
     const validateInputs = document.getElementsByClassName("validateInput");
 
     Array.from(validateInputs).forEach((input) => {
@@ -39,9 +40,8 @@ $(document).ready(function () {
      * @returns {boolean}
      */
     function isValid(input, regExp) {
-        return regExp.test(input.value);
+        return regExp.test(input.value) && !input.value.empty();
     }
-
 
 
     //get all data from inputs

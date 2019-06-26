@@ -2,47 +2,7 @@
 session_start();
 include_once 'config.php';
 $_SESSION['session_id'] = session_id();
-if (isset($_POST["sign_in"])) {
-    $valid = true;
-    $email = $_POST["email"];
-    $pass = $_POST["pass"];
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $valid = false;
-        $error_email = "Please check email input";
-    }
-    if (!preg_match("/^[\w]{8,16}$/", $pass)) {
-        $valid = false;
-        $error_pass = "Your password should be 8 to 16 chars";
-    }
-    if (!isset($_POST["agree"])) {
-        $valid = false;
-        $error_agree = "Please sign an agreement";
-    }
-
-    /**Replacing in email all system forbidden characters
-     * @param $email
-     * @return mixed safe system file name
-     */
-    function giveSafeName($email)
-    {
-        $unsafe_chars = array("<", ">", ":", "'", "/", "\\", "|", "?", "*");
-        return str_replace($unsafe_chars, "", $email);
-    }
-    //if all inputs correct create
-    if ($valid) {
-        $user_filename = giveSafeName($email);
-        $path = PATH . $user_filename . ".json";
-        if (!file_exists($path)) {
-            $file = fopen($path, "w");
-            fclose($file);
-        }
-        $_SESSION["email"] = $user_filename;
-        header("Location: form.php");
-    }
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,23 +42,19 @@ if (isset($_POST["sign_in"])) {
     <div class="container__right-column">
         <form id="form" class="form" method="post" action="">
             <h2>PLEASE LOG IN</h2>
-            <?php
-            if (isset($error_email)) echo "<span class='error_msg'>$error_email</span>"; ?>
+            <span id="error_email" class="error_msg"></span>
             <input class="validateInput" name="email" id="email"
                                          type="text" placeholder="example@gmail.com"
                                          value="<?php if (isset($email)) echo $email ?>">
             <label for="email">YOUR EMAIL</label>
-            <?php
-            if (isset($error_pass)) echo "<span class='error_msg'>$error_pass</span>"; ?>
+            <span id="error_pass" class="error_msg"></span>
             <input class="validateInput" name="pass" id="pass"
                                          type="password" placeholder="pass 8-16 characters"
                                          value="<?php if (isset($pass)) echo $pass ?>">
-            <label for="pass">PASSWORD </label>
-            <?php
-            if (isset($error_agree)) echo "<span class='error_msg'>$error_agree</span>"; ?>
-            <input name="agree" id="agree" type="checkbox">
+            <label for="pass">PASSWORD</label>
+            <span id="error_agree" class="error_msg"></span>
+            <input class="validateInput" name="agree" id="agree" type="checkbox">
             <label id="checkbox-label" for="agree">I agree with everything</label>
-
             <div>
                 <input name="sign_in" id="sign_in" type="submit" value="Sign in">
             </div>
@@ -108,6 +64,6 @@ if (isset($_POST["sign_in"])) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="plugins/slider/jquery.slide.js"></script>
 <script src="plugins/dropdown/jquery.nice-select.js"></script>
-<script src="script/script.js"></script>
+<script src="validate.js"></script>
 </body>
 </html>

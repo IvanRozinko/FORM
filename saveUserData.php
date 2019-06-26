@@ -1,6 +1,9 @@
 <?php
 session_start();
-include_once 'config.php';
+if ($_SESSION['session_id'] !== session_id()) {
+    header('Location: index.php');
+}
+
 /**
  * Saving user data to JSON file
  * @param $filenameJSON
@@ -8,7 +11,8 @@ include_once 'config.php';
  */
 function writeToJSON($filenameJSON, $data)
 {
-    $path = PATH . $filenameJSON . ".json";
+    include_once 'config.php';
+    $path = PATH . $filenameJSON . '.json';
     $json_object = json_encode($data);
     file_put_contents($path, $json_object);
 }
@@ -16,29 +20,29 @@ function writeToJSON($filenameJSON, $data)
     $isValid = true;
     $errors = [];
 
-    $name = $_POST["name"];
-    if (!preg_match(" /^[A-Za-z]+$/", $name)) {
+    $name = $_POST['name'];
+    if (!preg_match(' /^[A-Za-z]+$/', $name)) {
         $isValid = false;
-        $errors["error_name"] = "Name should consist only of latin letters";
+        $errors['error_name'] = 'Name should consist only of latin letters';
     }
 
-    $age = $_POST["age"];
-    if (!preg_match(" /^[0-9]{1,2}$/", $age)) {
+    $age = $_POST['age'];
+    if (!preg_match(' /^[0-9]{1,2}$/', $age)) {
         $isValid = false;
-        $errors["error_age"] = "Age should be a number 0 - 99";
+        $errors['error_age'] = 'Age should be a number 0 - 99';
     }
 
-    $errors["isValid"] = $isValid;
+    $errors['isValid'] = $isValid;
 
     //if all inputs are valid -> save user data to JSON file
     if ($isValid) {
         $user_data = array(
-            "name" => $name,
-            "age" => $age,
-            "gender" => $_POST["gender"],
-            "breed" => $_POST["breed"]
+            'name' => $name,
+            'age' => $age,
+            'gender' => $_POST['gender'],
+            'breed' => $_POST['breed']
         );
-        writeToJSON($_SESSION["email"], $user_data);
+        writeToJSON($_SESSION['email'], $user_data);
     }
     echo json_encode($errors);
 
