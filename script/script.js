@@ -42,34 +42,36 @@ $(document).ready(function () {
         return regExp.test(input.value);
     }
 
+
+
     //get all data from inputs
     $("input[name=send]").on("click", (event) => {
         event.preventDefault();
-        const $name = $("#name");
-        const $age = $("#age");
-        const $error_name = $("#error_name");
-        const $error_age = $("#error_age");
-        const $result = $("#saved");
+        const name = $("#name");
+        const age = $("#age");
+        const errorName = $("#error_name");
+        const errorAge = $("#error_age");
+        const result = $("#saved");
         $.ajax({
             url: "saveUserData.php",
             type: "POST",
             data: {
-                "name": $name.val(),
-                "age": $age.val(),
+                "name": name.val(),
+                "age": age.val(),
                 "gender": $("input[name=gender]").val(),
                 "breed": $(".breed_selector option:selected").text()
             },
             success: function (data) {
                 const obj = JSON.parse(data);
                 if (obj.isValid) {
-                    $result.text("Your data has been saved");
-                    $name.val("");
-                    $age.val("");
-                    $error_name.text("");
-                    $error_age.text("");
+                    result.text("Your data has been saved");
+                    name.val("");
+                    age.val("");
+                    errorName.text("");
+                    errorAge.text("");
                 } else {
-                    $error_name.text(obj.error_name);
-                    $error_age.text(obj.error_age);
+                    errorName.text(obj.error_name);
+                    errorAge.text(obj.error_age);
                 }
             }
         })

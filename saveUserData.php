@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'config.php';
 /**
  * Saving user data to JSON file
  * @param $filenameJSON
@@ -7,7 +8,7 @@ session_start();
  */
 function writeToJSON($filenameJSON, $data)
 {
-    $path = "users/" . $filenameJSON . ".json";
+    $path = PATH . $filenameJSON . ".json";
     $json_object = json_encode($data);
     file_put_contents($path, $json_object);
 }

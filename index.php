@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once 'config.php';
+$_SESSION['session_id'] = session_id();
 if (isset($_POST["sign_in"])) {
     $valid = true;
     $email = $_POST["email"];
@@ -30,7 +32,7 @@ if (isset($_POST["sign_in"])) {
     //if all inputs correct create
     if ($valid) {
         $user_filename = giveSafeName($email);
-        $path = "users/" . $user_filename . ".json";
+        $path = PATH . $user_filename . ".json";
         if (!file_exists($path)) {
             $file = fopen($path, "w");
             fclose($file);

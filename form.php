@@ -1,6 +1,8 @@
 <?php
 session_start();
-
+if ($_SESSION['session_id'] !== session_id()) {
+    header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,13 +48,11 @@ session_start();
             <input class="validateInput" name="name" id="name"
                                             type="text" placeholder="dog's name"
                                              value="<?php if (isset($name)) echo $name ?>">
-
             <label for="name">NAME</label>
             <span id="error_age" class="error_msg"></span>
             <input class="validateInput" name="age" id="age"
                                             type="number" placeholder="age years"
                                              value="<?php if (isset($age)) echo $age?>">
-
             <label for="age">AGE</label>
             <div class="form__gender">
                 <input id="male" type="radio" name="gender" checked="checked" value="male">
@@ -81,7 +81,6 @@ session_start();
             </div>
             <output class="valid" id="saved"></output>
         </form>
-
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
